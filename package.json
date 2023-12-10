@@ -1,11 +1,23 @@
 {
   "name": "dum",
-  "module": "index.ts",
-  "type": "module",
+  "version": "0.1.0",
+  "module": "src/index.ts",
+  "author": "Chris Pacheco <chrisdadev13@gmail.com>",
+  "description": "The lightweight and minimalist package manager for Node",
+  "repository": "chrisdadev13/dum",
+  "license": "MIT",
+  "bin": {
+    "dum": "src/cli.ts"
+  },
+  "private": "false",
   "devDependencies": {
     "bun-types": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "commander": "^11.1.0"
   }
 }
