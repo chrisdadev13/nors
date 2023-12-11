@@ -1,23 +1,36 @@
 {
   "name": "dum",
   "version": "0.1.0",
-  "module": "src/index.ts",
   "author": "Chris Pacheco <chrisdadev13@gmail.com>",
-  "description": "The lightweight and minimalist package manager for Node",
   "repository": "chrisdadev13/dum",
-  "license": "MIT",
-  "bin": {
-    "dum": "src/cli.ts"
+  "module": "src/cli.ts",
+  "scripts": {
+    "dev": "bun run ./lib/cli.ts",
+    "build": "bun build ./lib/cli.ts --compile --outfile dum && mv dum ./examples/"
   },
-  "private": "false",
   "devDependencies": {
     "bun-types": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
+  "bin": {
+    "dum": "src/cli.ts"
+  },
+  "description": "The lightweight and minimalist package manager for Node",
+  "license": "MIT",
+  "private": "false",
   "type": "module",
   "dependencies": {
-    "commander": "^11.1.0"
+    "@types/fs-extra": "^11.0.4",
+    "@types/progress": "^2.0.7",
+    "@types/tar": "^6.1.10",
+    "axios": "^1.6.2",
+    "commander": "^11.1.0",
+    "find-up": "^7.0.0",
+    "fs-extra": "^11.2.0",
+    "log-update": "^6.0.0",
+    "progress": "^2.0.3",
+    "tar": "^6.2.0"
   }
 }
