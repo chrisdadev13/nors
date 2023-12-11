@@ -3,7 +3,7 @@ import axios from "axios";
 export interface Manifest {
   [version: string]: {
     dependencies?: { [dep: string]: string };
-    dist: { shasum: string; tarball: string };
+    dist: { shasum: string; tar: string };
   };
 }
 
@@ -11,7 +11,7 @@ const REGISTRY = "https://registry.npmjs.org/";
 
 const cache: { [dep: string]: Manifest } = Object.create(null);
 
-export default async function (name: string): Promise<Manifest> {
+export default async function resolve(name: string): Promise<Manifest> {
   const cached = cache[name];
   if (cached) return cached;
 
@@ -28,7 +28,7 @@ export default async function (name: string): Promise<Manifest> {
       dependencies: version.dependencies,
       dist: {
         shasum: version.dist.shasum,
-        tarball: version.dist.tarball,
+        tar: version.dist.tarball,
       },
     },
   };

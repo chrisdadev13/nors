@@ -6,7 +6,7 @@
   "module": "src/cli.ts",
   "scripts": {
     "dev": "bun run ./lib/cli.ts",
-    "build": "bun build ./lib/cli.ts --compile --outfile dum && mv dum ./examples/"
+    "build": "bun build ./lib/cli.ts --compile --outfile dum && mv dum ./examples/dum/"
   },
   "devDependencies": {
     "bun-types": "latest"
