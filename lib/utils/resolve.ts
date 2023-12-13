@@ -3,6 +3,7 @@ import axios from "axios";
 export interface Manifest {
   [version: string]: {
     dependencies?: { [dep: string]: string };
+    version: string;
     dist: { shasum: string; tar: string };
   };
 }
@@ -15,21 +16,28 @@ export default async function resolve(name: string): Promise<Manifest> {
   const cached = cache[name];
   if (cached) return cached;
 
-  const response = await axios.get(`${REGISTRY}${name}`);
+  const response = await axios.get(`${REGISTRY}${name}/latest`, {
+    headers: {
+      "Content-Type":
+        "application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*",
+      Authorization: "Accept",
+    },
+  });
   if (response.status !== 200) {
     throw new Error(`ERROR: No such package: ${name}`);
   }
 
-  const lts = response.data["dist-tags"].latest;
-  const version = response.data.versions[lts];
-
   return {
-    [lts]: {
-      dependencies: version.dependencies,
+    lts: {
+      dependencies: response.data.dependencies,
+      version: response.data.version,
       dist: {
-        shasum: version.dist.shasum,
-        tar: version.dist.tarball,
+        shasum: response.data.dist.shasum,
+        tar: response.data.dist.tarball,
       },
     },
   };
 }
+
+//const result = await resolve("typescript");
+//console.log(result);

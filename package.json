@@ -6,7 +6,7 @@
   "module": "src/cli.ts",
   "scripts": {
     "dev": "bun run ./lib/cli.ts",
-    "build": "bun build ./lib/cli.ts --compile --outfile dum && mv dum ./examples/dum/"
+    "build": "bun build ./lib/cli.ts --compile --outfile tspm && mv tspm ./examples/dum/"
   },
   "devDependencies": {
     "bun-types": "latest"
@@ -29,8 +29,10 @@
     "commander": "^11.1.0",
     "find-up": "^7.0.0",
     "fs-extra": "^11.2.0",
+    "ink": "^4.4.1",
     "log-update": "^6.0.0",
     "progress": "^2.0.3",
+    "react": "^18.2.0",
     "tar": "^6.2.0"
   }
 }

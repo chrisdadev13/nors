@@ -3,11 +3,15 @@ import init from "./commands/init";
 import install from "./commands/install";
 
 program
-  .name("dum")
-  .description("Dum Package Manager for Node")
+  .name("tspm")
+  .description("Typescript Package Manager for Node")
   .version("0.1.0");
 
-program.command("init").description("create package.json file").action(init);
+program
+  .command("init")
+  .option("-j --javascript", "start without typescript")
+  .description("create package.json file")
+  .action(init);
 
 program
   .command("install")
