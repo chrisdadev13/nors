@@ -1,9 +1,9 @@
-# dum
+# tspm
 
 To install dependencies:
 
 ```bash
-bun install
+tspm install react
 ```
 
 To run:
