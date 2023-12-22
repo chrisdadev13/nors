@@ -4,7 +4,7 @@ mod manifest;
 
 use clap::{Args, Parser, Subcommand};
 
-use manifest::init::init;
+use manifest::init::init_project;
 
 #[derive(Parser)]
 #[clap(name = "nors")]
@@ -36,7 +36,7 @@ struct InitArgs {
 fn main() {
     match &Cli::parse().command {
         Commands::Init(args) => {
-            init(args.yes);
+            init_project(args.yes);
         }
     }
 }

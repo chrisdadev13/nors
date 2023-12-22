@@ -13,7 +13,7 @@ struct InitPrompts {
     author: String,
 }
 
-pub fn init(yes: bool) {
+pub fn init_project(yes: bool) {
     let cwd = get_current_working_directory().expect("cannot read the current working directory");
 
     if cwd.as_path().join("package.json").exists() {
