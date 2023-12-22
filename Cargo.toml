@@ -9,4 +9,5 @@ edition = "2021"
 clap = { version = "4.4.11", features = ["derive"] }
 colour = "0.7.0"
 dialoguer = "0.11.0"
+reqwest = "0.11.23"
 serde_json = "1.0.1"

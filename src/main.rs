@@ -5,6 +5,7 @@ mod manifest;
 use clap::{Args, Parser, Subcommand};
 
 use manifest::init::init_project;
+use manifest::install::install_package;
 
 #[derive(Parser)]
 #[clap(name = "nors")]
@@ -24,6 +25,9 @@ struct Cli {
 enum Commands {
     /// initialize a typescript project in the current directory
     Init(InitArgs),
+
+    /// install a package in the current directory
+    Install,
 }
 
 #[derive(Args)]
@@ -37,6 +41,9 @@ fn main() {
     match &Cli::parse().command {
         Commands::Init(args) => {
             init_project(args.yes);
+        }
+        Commands::Install => {
+            install_package();
         }
     }
 }
