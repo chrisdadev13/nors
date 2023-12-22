@@ -1,4 +1,10 @@
-use clap::{Parser, Subcommand};
+mod file_system;
+mod http;
+mod manifest;
+
+use clap::{Args, Parser, Subcommand};
+
+use manifest::init::init;
 
 #[derive(Parser)]
 #[clap(name = "nors")]
@@ -16,14 +22,21 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// initialize a package.json
-    Init,
+    /// initialize a typescript project in the current directory
+    Init(InitArgs),
+}
+
+#[derive(Args)]
+struct InitArgs {
+    /// initialize a typescript project with default options
+    #[arg(short, long)]
+    yes: bool,
 }
 
 fn main() {
     match &Cli::parse().command {
-        Commands::Init => {
-            println!("Hello World");
+        Commands::Init(args) => {
+            init(args.yes);
         }
     }
 }
